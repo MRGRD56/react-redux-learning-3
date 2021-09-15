@@ -1,7 +1,6 @@
 import User from "../../User";
+import IDataState from "../IDataState";
 
-export default interface UsersState {
-    users: User[],
-    isLoading: boolean,
-    error: string | null
+export default interface UsersState extends IDataState {
+    users: User[];
 }
