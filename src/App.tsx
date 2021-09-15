@@ -2,14 +2,18 @@ import React from 'react';
 import './App.css';
 import UsersList from "./components/UsersList";
 import {Redirect, Route, Switch} from "react-router";
+import {BrowserRouter} from "react-router-dom";
+import TodoList from "./components/TodoList";
 
 function App() {
     return (
-        <Switch>
-            <Route path="/" exact component={UsersList}/>
-            <Route path="/todos"/>
-            <Redirect to="/"/>
-        </Switch>
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" exact component={UsersList}/>
+                <Route path="/todos" component={TodoList}/>
+                <Redirect to="/"/>
+            </Switch>
+        </BrowserRouter>
     );
 }
 

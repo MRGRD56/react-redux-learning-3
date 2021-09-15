@@ -14,7 +14,7 @@ export interface FetchTodosErrorAction extends Action<TodosActionType.fetchTodos
     error: string | null;
 }
 
-export interface SetTodoPageAction extends Action<TodosActionType.setTodoPage> {
+export interface SetTodoPageAction extends Action<TodosActionType.setTodosPage> {
     page: number;
 }
 

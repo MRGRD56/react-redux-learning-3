@@ -6,7 +6,8 @@ const initialState: TodosState = {
     todos: [],
     isLoading: true,
     error: null,
-    page: 1
+    page: 1,
+    pageLimit: 10
 };
 
 const todosReducer = (state: TodosState | undefined, action: TodosAction): TodosState => {
@@ -30,9 +31,9 @@ const todosReducer = (state: TodosState | undefined, action: TodosAction): Todos
             return {
                 ...state,
                 isLoading: false,
-                error: "An error occurred when todos loading"
+                error: action.error
             };
-        case TodosActionType.setTodoPage:
+        case TodosActionType.setTodosPage:
             return {
                 ...state,
                 page: action.page
