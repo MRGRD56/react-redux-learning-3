@@ -17,10 +17,17 @@ export const fetchTodos = (page = 1, limit = 10) => {
                 }
             });
             const todos = response.data;
+            const pagesCount = Math.ceil(response.headers["x-total-count"] / limit);
             dispatch({
                 type: TodosActionType.fetchTodosSuccess,
                 todos
             });
+            if (!todos.length || page >= pagesCount) {
+                dispatch({
+                    type: TodosActionType.setCanLoadMoreTodos,
+                    canLoadMoreTodos: false
+                })
+            }
         } catch (error) {
             console.error(error);
             dispatch({

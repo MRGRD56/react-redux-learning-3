@@ -5,4 +5,5 @@ export default interface TodosState extends IDataState {
     todos: Todo[];
     page: number;
     pageLimit: number;
+    canLoadMoreTodos: boolean;
 }

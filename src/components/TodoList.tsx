@@ -7,6 +7,7 @@ const TodoList: FC = () => {
     const {fetchTodos, setTodoPage} = useActions();
 
     function fetchNextPage() {
+        if (!todosState.canLoadMoreTodos) return;
         fetchTodos(todosState.page);
         setTodoPage(todosState.page + 1);
     }
@@ -32,7 +33,7 @@ const TodoList: FC = () => {
             ))}
             {todosState.isLoading
                 ? <div>Now loading...</div>
-                : <button onClick={() => fetchNextPage()}>Load more</button>}
+                : (todosState.canLoadMoreTodos && <button onClick={() => fetchNextPage()}>Load more</button>)}
         </div>
     );
 };

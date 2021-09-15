@@ -7,7 +7,8 @@ const initialState: TodosState = {
     isLoading: true,
     error: null,
     page: 1,
-    pageLimit: 10
+    pageLimit: 10,
+    canLoadMoreTodos: true
 };
 
 const todosReducer = (state: TodosState | undefined, action: TodosAction): TodosState => {
@@ -37,6 +38,11 @@ const todosReducer = (state: TodosState | undefined, action: TodosAction): Todos
             return {
                 ...state,
                 page: action.page
+            };
+        case TodosActionType.setCanLoadMoreTodos:
+            return {
+                ...state,
+                canLoadMoreTodos: action.canLoadMoreTodos
             };
         default:
             return state;

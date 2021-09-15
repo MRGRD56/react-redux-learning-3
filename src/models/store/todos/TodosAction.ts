@@ -18,6 +18,10 @@ export interface SetTodoPageAction extends Action<TodosActionType.setTodosPage> 
     page: number;
 }
 
-type TodosAction = FetchTodosAction | FetchTodosSuccessAction | FetchTodosErrorAction | SetTodoPageAction;
+export interface SetCanLoadMoreTodosAction extends Action<TodosActionType.setCanLoadMoreTodos> {
+    canLoadMoreTodos: boolean;
+}
+
+type TodosAction = FetchTodosAction | FetchTodosSuccessAction | FetchTodosErrorAction | SetTodoPageAction | SetCanLoadMoreTodosAction;
 
 export default TodosAction;
