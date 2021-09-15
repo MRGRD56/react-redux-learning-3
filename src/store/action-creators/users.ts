@@ -3,7 +3,7 @@ import {AppDispatch} from "../index";
 import axios from "axios";
 import User from "../../models/User";
 
-const fetchUsers = () => {
+export const fetchUsers = () => {
     return async (dispatch: AppDispatch) => {
         try {
             dispatch({
@@ -16,6 +16,7 @@ const fetchUsers = () => {
                 users
             });
         } catch (error) {
+            console.error(error);
             dispatch({
                 type: UsersActionType.fetchUsersError,
                 error: "An error occurred when users loading"
@@ -23,5 +24,3 @@ const fetchUsers = () => {
         }
     };
 };
-
-export default fetchUsers;

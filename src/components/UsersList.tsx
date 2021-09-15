@@ -1,15 +1,13 @@
 import React, {FC, useEffect} from 'react';
 import useAppSelector from "../hooks/useAppSelector";
-import useAppDispatch from "../hooks/useAppDispatch";
-import fetchUsers from "../store/action-creators/fetchUsers";
+import useActions from "../hooks/useActions";
 
 const UsersList: FC = () => {
     const {users, isLoading, error} = useAppSelector(state => state.users);
-    const dispatch = useAppDispatch();
+    const {fetchUsers} = useActions();
 
     useEffect(() => {
-        // @ts-ignore
-        dispatch(fetchUsers());
+        fetchUsers();
     }, []);
 
     if (error) {
@@ -27,7 +25,7 @@ const UsersList: FC = () => {
     return (
         <div>
             {users.map(user => (
-                <div>
+                <div key={user.id}>
                     <p style={{fontWeight: "bold"}}>{user.id}. {user.username}</p>
                     <p>Email: {user.email}</p>
                     <p>Phone: {user.phone}</p>
